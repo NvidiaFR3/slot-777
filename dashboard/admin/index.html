@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h1>FR3 Admin Dashboard</h1>
+  <ul id="user-list"></ul>
+  <script>
+    fetch('/api/users').then(res => res.json()).then(users => {
+      const list = document.getElementById('user-list');
+      users.forEach(u => {
+        const li = document.createElement('li');
+        li.textContent = `${u.username} — Rp${u.saldo}`;
+        list.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
